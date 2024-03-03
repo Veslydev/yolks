@@ -1,5 +1,13 @@
 name: build games
-on: [push, pull_request]
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 1 * *"
+  push:
+    branches:
+      - master
+    paths:
+      - games/**
 jobs:
   push:
     name: "games:${{ matrix.game }}"
