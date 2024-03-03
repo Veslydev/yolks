@@ -24,7 +24,7 @@ FROM        --platform=$TARGETOS/$TARGETARCH ibm-semeru-runtimes:open-17-jdk
 
 LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 
-LABEL       org.opencontainers.image.source="https://github.com/pterodactyl/yolks"
+LABEL       org.opencontainers.image.source="https://github.com/veslydev/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
 
 RUN 				apt-get update -y \
