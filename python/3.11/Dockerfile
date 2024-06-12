@@ -22,7 +22,7 @@
 
 FROM        --platform=$TARGETOS/$TARGETARCH python:3.11-alpine
 
-LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
+LABEL       author="Matthew Penner" maintainer="mattew@pterodactyl.io"
 
 LABEL       org.opencontainers.image.source="https://github.com/veslydev/yolks"
 LABEL       org.opencontainers.image.licenses=MIT
