@@ -25,7 +25,7 @@ FROM        --platform=$TARGETOS/$TARGETARCH  python:3.11-slim-bookworm
 LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 
 RUN         apt update \
-            && apt --dry-run -y install git gcc g++ ca-certificates dnsutils curl iproute2 ffmpeg procps tini \
+            && apt -y install git gcc g++ ca-certificates openjdk-21-jdk dnsutils curl iproute2 ffmpeg procps tini \
             && useradd -m -d /home/container container
 
 USER        container
