@@ -50,7 +50,7 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           push: true
           tags: |
-            ghcr.io/Veslydev/yolks:bot_${{ matrix.tag }}
+            ghcr.io/veslydev/yolks:bot_${{ matrix.tag }}
       - name: Move cache
         run: |
           rm -rf /tmp/.buildx-cache
@@ -82,4 +82,4 @@ jobs:
   #         platforms: linux/amd64
   #         push: true
   #         tags: |
-  #           ghcr.io/Veslydev/yolks:bot_${{ matrix.tag }}
+  #           ghcr.io/veslydev/yolks:bot_${{ matrix.tag }}

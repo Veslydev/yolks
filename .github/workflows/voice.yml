@@ -34,7 +34,7 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/Veslydev/yolks:voice_${{ matrix.tag }}
+            ghcr.io/veslydev/yolks:voice_${{ matrix.tag }}
 
 
   pushx64_arm64:
@@ -65,4 +65,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/Veslydev/yolks:voice_${{ matrix.tag }}
+            ghcr.io/veslydev/yolks:voice_${{ matrix.tag }}

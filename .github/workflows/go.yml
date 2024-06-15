@@ -42,4 +42,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/Veslydev/yolks:go_${{ matrix.tag }}
+            ghcr.io/veslydev/yolks:go_${{ matrix.tag }}
