@@ -1,4 +1,4 @@
-FROM        ghcr.io/veslydev/yolks:debian
+FROM        ghcr.io/parkervcp/yolks:debian
 
 LABEL       author="Manuel Dielacher" maintainer="th3dilli@gmx.at"
 
