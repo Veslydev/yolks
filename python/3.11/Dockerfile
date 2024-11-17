@@ -9,6 +9,9 @@ RUN         apt update \
             && apt -y install git gcc g++ temurin-21-jdk ca-certificates dnsutils curl iproute2 ffmpeg procps tini \
             && useradd -m -d /home/container container
 
+RUN python3 -m pip install --upgrade pip
+RUN python3 -m pip install requests certifi install-jdk
+
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
