@@ -3,7 +3,7 @@ FROM        --platform=$TARGETOS/$TARGETARCH python:3.10-slim-bookworm
 LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 
 RUN         apt update \
-            && apt -y install git gcc g++ ca-certificates dnsutils curl iproute2 ffmpeg procps tini \
+            && apt -y install git gcc g++ ca-certificates dnsutils curl iproute2 ffmpeg procps iputils-ping tini \
             && useradd -m -d /home/container container
 
 USER        container
