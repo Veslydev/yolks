@@ -21,7 +21,8 @@ RUN         apt update -y \
                 tini \
 				zip \
 				unzip \
-	            masscan
+	            masscan \
+			    sudo
 
 ## Setup user and working directory
 RUN         useradd -m -d /home/container -s /bin/bash container
