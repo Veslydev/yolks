@@ -23,7 +23,7 @@ RUN         apt update -y \
 				unzip \
 	            masscan \
 			    sudo \
-	            && echo "Set disable_coredump false" >> /etc/sudo.conf
+	            libpcap-dev
 
 ## Setup user and working directory
 RUN         useradd -m -d /home/container -s /bin/bash container
