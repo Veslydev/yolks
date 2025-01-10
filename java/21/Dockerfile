@@ -23,11 +23,12 @@ RUN         apt update -y \
 				unzip \
 	            masscan \
 			    sudo \
-	            libpcap-dev \
-			    universe -y \
-			    && apt update -y \
-            && apt install -y \
-			apt install su-exec
+	            libpcap-dev 
+
+RUN wget -O /usr/local/bin/su-exec https://github.com/ncopa/su-exec/releases/download/v0.2/su-exec
+
+# Make it executable
+RUN chmod +x /usr/local/bin/su-exec
 
 
 ## Setup user and working directory
