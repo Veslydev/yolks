@@ -25,10 +25,9 @@ RUN         apt update -y \
 			    sudo \
 	            libpcap-dev 
 
-RUN wget -O /usr/local/bin/su-exec https://github.com/ncopa/su-exec/releases/download/v0.2/su-exec
 
-# Make it executable
-RUN chmod +x /usr/local/bin/su-exec
+RUN wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/1.17/gosu-amd64" && \
+    chmod +x /usr/local/bin/gosu
 
 
 ## Setup user and working directory
