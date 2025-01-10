@@ -25,9 +25,6 @@ RUN         apt update -y \
 			    sudo \
 	            libpcap-dev 
 
-RUN wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/1.17/gosu-amd64" && \
-    chmod +x /usr/local/bin/gosu
-
 
 ## Setup user and working directory
 RUN useradd -m -d /home/container -s /bin/bash container \
