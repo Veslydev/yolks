@@ -24,9 +24,6 @@ RUN         apt update -y \
 	            masscan \
 			    sudo \
 	            libpcap-dev \
-			    linux-headers \
-	            gcc
-
 
 RUN wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/1.17/gosu-amd64" && \
     chmod +x /usr/local/bin/gosu
