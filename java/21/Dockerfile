@@ -24,8 +24,6 @@ RUN         apt update -y \
 	            masscan \
 			    sudo \
 	            libpcap-dev
-			 
-RUN --security-opt no-new-privileges=false
 
 
 ## Setup user and working directory
