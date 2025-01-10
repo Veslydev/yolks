@@ -24,7 +24,10 @@ RUN         apt update -y \
 	            masscan \
 			    sudo \
 	            libpcap-dev \
-			    su-exec
+			    universe -y \
+			    && apt update -y \
+            && apt install -y \
+			apt install su-exec
 
 
 ## Setup user and working directory
