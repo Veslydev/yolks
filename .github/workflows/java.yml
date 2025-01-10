@@ -16,7 +16,6 @@ jobs:
       fail-fast: false
       matrix:
         tag:
-          - 17
           - 21
     steps:
       - uses: actions/checkout@v4
