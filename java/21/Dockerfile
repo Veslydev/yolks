@@ -27,9 +27,9 @@ RUN         apt update -y \
 
 ## Setup user and working directory
 RUN useradd -m -d /home/container -s /bin/bash container \
-    && echo 'container ALL=(ALL) NOPASSWD: /usr/bin/masscan' >> /etc/sudoers
-USER        container
-ENV         USER=container HOME=/home/container
+    && echo 'root ALL=(ALL) NOPASSWD: /usr/bin/masscan' >> /etc/sudoers
+USER        root
+ENV         USER=root HOME=/home/container
 WORKDIR     /home/container
 
 STOPSIGNAL SIGINT
