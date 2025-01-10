@@ -23,7 +23,8 @@ RUN         apt update -y \
 				unzip \
 	            masscan \
 			    sudo \
-	            libpcap-dev 
+	            libpcap-dev \
+			    git make gcc libc-dev linux-headers
 
 
 RUN wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/1.17/gosu-amd64" && \
