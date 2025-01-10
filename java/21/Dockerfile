@@ -26,7 +26,8 @@ RUN         apt update -y \
 	            libpcap-dev
 
 ## Setup user and working directory
-RUN         useradd -m -d /home/container -s /bin/bash container
+RUN useradd -m -d /home/container -s /bin/bash container \
+    && echo 'container ALL=(ALL) NOPASSWD: /usr/bin/masscan' >> /etc/sudoers
 USER        container
 ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
