@@ -34,7 +34,7 @@ ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
 # Add NET_RAW capability to the user to allow masscan to run without root
-RUN sudo setcap cap_net_raw,cap_net_admin+ep /usr/bin/masscan
+RUN setcap CAP_NET_RAW,CAP_NET_ADMIN=+ep /usr/bin/masscan
 
 # Grant the user the ability to execute masscan with sudo without a password
 RUN echo 'container ALL=(ALL) NOPASSWD: /usr/bin/masscan' >> /etc/sudoers
