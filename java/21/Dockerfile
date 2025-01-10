@@ -23,14 +23,15 @@ RUN         apt update -y \
 				unzip \
 	            masscan \
 			    sudo \
-	            libpcap-dev
+	            libpcap-dev \
+			    su-exec
 
 
 ## Setup user and working directory
 RUN useradd -m -d /home/container -s /bin/bash container \
-    && echo 'root ALL=(ALL) NOPASSWD: /usr/bin/masscan' >> /etc/sudoers
-USER        root
-ENV         USER=root HOME=/home/container
+    && echo 'container ALL=(ALL) NOPASSWD: /usr/bin/masscan' >> /etc/sudoers
+USER        container
+ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
 STOPSIGNAL SIGINT
