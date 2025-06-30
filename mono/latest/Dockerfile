@@ -17,11 +17,11 @@ RUN         ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime \
             && echo "Europe/Istanbul" > /etc/timezone
 
 # Create timezone mapping for Mono/.NET to handle Windows timezone names
-RUN         mkdir -p /usr/share/zoneinfo/Turkey\ Standard\ Time \
-            && cp /usr/share/zoneinfo/Europe/Istanbul /usr/share/zoneinfo/Turkey\ Standard\ Time/Turkey\ Standard\ Time
-
-# Alternative: Create a symbolic link for the Windows timezone name
-RUN         ln -sf /usr/share/zoneinfo/Europe/Istanbul "/usr/share/zoneinfo/Turkey Standard Time"
+# Create the timezone file that can be read by any user
+RUN         cp /usr/share/zoneinfo/Europe/Istanbul "/usr/share/zoneinfo/Turkey Standard Time" \
+            && chmod 644 "/usr/share/zoneinfo/Turkey Standard Time" \
+            && chown root:root "/usr/share/zoneinfo/Turkey Standard Time" \
+            && chmod 755 /usr/share/zoneinfo
 
 # Only install the needed steamcmd packages on the AMD64 build
 RUN         if [ "$(uname -m)" = "x86_64" ]; then \
@@ -37,6 +37,8 @@ ENV         TZ=Europe/Istanbul
 # Set ICU timezone data location for better .NET timezone support
 ENV         ICU_DATA=/usr/share/icu
 ENV         DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
+# Additional timezone environment variables for Mono
+ENV         MONO_TZ_DATA=/usr/share/zoneinfo
 
 WORKDIR     /home/container
 
