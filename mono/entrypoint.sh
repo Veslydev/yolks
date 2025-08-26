@@ -13,13 +13,6 @@ export INTERNAL_IP
 # Switch to the container's working directory
 cd /home/container || exit 1
 
-# Warn if CAP_NET_ADMIN isn’t granted to the container; nft/iptables will fail without it even if binaries have setcap.
-if ! capsh --print 2>/dev/null | grep -q "cap_net_admin"; then
-    echo "[WARN] CAP_NET_ADMIN not present in container. nft/iptables will be denied by the kernel."
-    echo "[WARN] Grant Docker capabilities: --cap-add=NET_ADMIN --cap-add=NET_RAW (in Egg/Server settings)."
-    echo "[WARN] Alternatively run as root with those capabilities."
-fi
-
 if [ ! -z "${SRCDS_APPID}" ]; then
     ## just in case someone removed the defaults.
     if [ "${STEAM_USER}" == "" ]; then
@@ -33,7 +26,7 @@ if [ ! -z "${SRCDS_APPID}" ]; then
     fi
 
     ## if auto_update is not set or to 1 update
-    if [ -z ${AUTO_UPDATE} ] || [ "${AUTO_UPDATE}" == "1" ]; then 
+    if [ -z ${AUTO_UPDATE} ] || [ "${AUTO_UPDATE}" == "1" ]; then
         # Update Source Server
         if [ ! -z ${SRCDS_APPID} ]; then
             if [ "${STEAM_USER}" == "anonymous" ]; then
