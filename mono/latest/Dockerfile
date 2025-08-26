@@ -19,9 +19,22 @@ RUN         ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime \
 
 # Allow non-root to manage nft/iptables when container has NET_ADMIN capability
 # Note: Docker/Wings must still grant --cap-add=NET_ADMIN or these will be masked by the bounding set.
-RUN         setcap cap_net_admin,cap_net_raw+ep /usr/sbin/nft || true \
-            && setcap cap_net_admin,cap_net_raw+ep /usr/sbin/iptables || true \
-            && if [ -x /usr/sbin/iptables-legacy ]; then setcap cap_net_admin,cap_net_raw+ep /usr/sbin/iptables-legacy || true; fi
+RUN         for b in \
+                /usr/sbin/nft \
+                /usr/sbin/iptables \
+                /usr/sbin/iptables-nft \
+                /usr/sbin/xtables-nft-multi \
+                /usr/sbin/iptables-legacy \
+                /usr/sbin/xtables-legacy-multi \
+                /usr/sbin/ip6tables \
+                /usr/sbin/ip6tables-nft \
+                /usr/sbin/ip6tables-legacy \
+                /usr/sbin/iptables-restore \
+                /usr/sbin/ip6tables-restore \
+                /usr/sbin/ebtables \
+                /usr/sbin/arptables; do \
+                if [ -x "$b" ]; then setcap cap_net_admin,cap_net_raw+ep "$b" || true; fi; \
+            done
 
 # Create timezone mapping for Mono/.NET to handle Windows timezone names
 RUN         cp /usr/share/zoneinfo/Europe/Istanbul "/usr/share/zoneinfo/Turkey Standard Time" \
