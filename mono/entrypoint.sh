@@ -24,7 +24,7 @@ if [ ! -z "${SRCDS_APPID}" ]; then
     else
         echo -e "user set to ${STEAM_USER}"
     fi
-
+AUTO_UPDATE=0
     ## if auto_update is not set or to 1 update
     if [ -z ${AUTO_UPDATE} ] || [ "${AUTO_UPDATE}" == "1" ]; then
         # Update Source Server
