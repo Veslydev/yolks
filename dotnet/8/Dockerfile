@@ -4,9 +4,10 @@ LABEL       author="Torsten Widmann" maintainer="info@goover.de"
 
 ENV         DEBIAN_FRONTEND=noninteractive
 
+# Added python3, python3-pip, and python3-venv to the package list below
 RUN         apt update -y \
             && apt upgrade -y \
-            && apt install -y apt-transport-https wget curl iproute2 libgdiplus tini \
+            && apt install -y apt-transport-https wget curl iproute2 libgdiplus tini python3 python3-pip python3-venv \
             && wget https://dot.net/v1/dotnet-install.sh \
             && D_V="$(curl -sSL https://dotnet.microsoft.com/en-us/download/dotnet/8.0 | grep -i  '<h3 id="sdk-8.*">SDK 8.*.*</h3>'  | head -1 | awk -F\" '{print $3}' | awk '{print $2;}' | sed 's/<\/h3>//g')" \ 
             && chmod +x dotnet-install.sh \
