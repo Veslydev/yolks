@@ -5,8 +5,23 @@ cd /home/container
 INTERNAL_IP=$(ip route get 1 | awk '{print $(NF-2);exit}')
 export INTERNAL_IP
 
-# set this variable, dotnet needs it even without it it reports to `dotnet --info` it can not start any aplication without this
+# set this variable, dotnet needs it. Even without it, it reports to `dotnet --info`, but it cannot start any application without this
 export DOTNET_ROOT=/usr/share/
+
+# --- PYTHON ADDITIONS START ---
+
+# Print python version
+printf "\033[1m\033[33mcontainer@pelican~ \033[0mpython3 --version\n"
+python3 --version
+
+# Check for requirements.txt and install dependencies if it exists
+if [ -f "./requirements.txt" ]; then
+    printf "\033[1m\033[33mcontainer@pelican~ \033[0mpip install -r requirements.txt\n"
+    # Use --user to avoid permission issues since the container runs as a non-root user
+    pip install --user -r requirements.txt
+fi
+
+# --- PYTHON ADDITIONS END ---
 
 # print the dotnet version on startup
 printf "\033[1m\033[33mcontainer@pelican~ \033[0mdotnet --version\n"
